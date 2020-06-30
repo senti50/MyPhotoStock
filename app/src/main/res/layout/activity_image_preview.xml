@@ -10,38 +10,36 @@
         android:id="@+id/image_preview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:adjustViewBounds="true"
         android:gravity="center_vertical"
         android:scaleType="fitXY"
-        android:adjustViewBounds="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
-        <ImageButton
-            android:id="@+id/button_delete"
-            android:layout_height="48dp"
-            android:layout_width="48dp"
-            android:layout_margin="24dp"
-            android:background="@mipmap/icon_remove_foreground"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:contentDescription="delte" />
-        <ImageButton
-            android:id="@+id/button_accept"
-            android:layout_height="48dp"
-            android:layout_width="48dp"
-            android:layout_margin="24dp"
-            android:background="@mipmap/icon_accept_foreground"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:contentDescription="acept" />
+    <ImageButton
+        android:id="@+id/button_delete"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="24dp"
+        android:background="@drawable/ic_baseline_delete_24"
+        android:backgroundTint="#000000"
+        android:contentDescription="delte"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-
-
-
-
+    <ImageButton
+        android:id="@+id/button_accept"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="24dp"
+        android:background="@drawable/ic_baseline_done_24"
+        android:backgroundTint="#000000"
+        android:contentDescription="acept"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
