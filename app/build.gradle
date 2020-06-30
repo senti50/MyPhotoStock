@@ -3,7 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 28
     buildToolsVersion "29.0.3"
     buildFeatures{
         viewBinding = true
@@ -11,7 +11,7 @@ android {
     defaultConfig {
         applicationId "com.example.myphotostock"
         minSdkVersion 23
-        targetSdkVersion 29
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
 
@@ -56,4 +56,7 @@ dependencies {
     implementation "androidx.camera:camera-view:1.0.0-alpha13"
     // If you want to additionally use the CameraX Extensions library
     implementation "androidx.camera:camera-extensions:1.0.0-alpha13"
+
+    // picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }
