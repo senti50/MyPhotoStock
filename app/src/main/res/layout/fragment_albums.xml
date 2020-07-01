@@ -5,9 +5,11 @@
     android:layout_height="match_parent"
     tools:context=".AlbumsFragment">
 
-    <TextView
+    <ListView
+        android:id="@+id/LV_albums"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="albums" />
+        tools:listitem="@layout/cell_album_item"
+        />
 
 </FrameLayout>

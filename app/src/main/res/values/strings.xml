@@ -25,4 +25,5 @@
     <string name="e_password_requirements">Password must has minimum 6 characters</string>
     <string name="p_register_success">Registration successful</string>
     <string name="e_sign_up_fail">Sign Up failed. Try again.</string>
+    <string name="sample_data">Sample data</string>
 </resources>
