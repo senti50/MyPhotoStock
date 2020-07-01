@@ -146,7 +146,7 @@ class CameraFragment : Fragment() {
             object : ImageCapture.OnImageSavedCallback {
                 override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
                     previewView.post {
-                        Toast.makeText(context, "Photo capture succeeded: ${file.absolutePath}", Toast.LENGTH_LONG).show()
+                        Toast.makeText(context, resources.getString(R.string.p_photo_capture)+" ${file.absolutePath}", Toast.LENGTH_LONG).show()
                     }
 
                 }

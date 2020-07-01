@@ -44,17 +44,17 @@ class LoginActivity : AppCompatActivity() {
 
     private fun doLogin() {
         if (emailEditText.text.toString().isEmpty()) {
-            emailEditText.error = "Please enter a email"
+            emailEditText.error = resources.getString(R.string.e_enter_mail)
             emailEditText.requestFocus()
             return
         }
         if (!Patterns.EMAIL_ADDRESS.matcher(emailEditText.text.toString()).matches()) {
-            emailEditText.error = "Please enter valid email"
+            emailEditText.error = resources.getString(R.string.e_enter_valid_mail)
             emailEditText.requestFocus()
             return
         }
         if (passwordEditText.text.toString().isEmpty()) {
-            passwordEditText.error = "Please enter a password"
+            passwordEditText.error = resources.getString(R.string.e_enter_password)
             passwordEditText.requestFocus()
             return
         }
@@ -64,7 +64,7 @@ class LoginActivity : AppCompatActivity() {
                     val user = auth.currentUser
                     updateUI(user)
                 } else {
-                    Toast.makeText(baseContext, "Login Failed", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(baseContext, resources.getString(R.string.e_login_fail), Toast.LENGTH_SHORT).show()
                     updateUI(null)
                 }
             }
@@ -81,7 +81,7 @@ class LoginActivity : AppCompatActivity() {
             finish()
         }
         else {
-            Toast.makeText(baseContext, "Login failed", Toast.LENGTH_SHORT).show()
+            Toast.makeText(baseContext, resources.getString(R.string.e_login_fail), Toast.LENGTH_SHORT).show()
         }
 
     }

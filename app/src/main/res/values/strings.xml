@@ -1,14 +1,13 @@
 <resources>
     <string name="app_name">MyPhotoStock</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 
 
-    <string name="camera">Aparat</string>
-    <string name="scanner_database">Dane skanera</string>
-    <string name="albums">Albumy</string>
+    <string name="camera">Camera</string>
+    <string name="scanner_database">Scanner data</string>
+    <string name="albums">Albums</string>
+    <string name="p_photo_capture">Photo capture succeeded:</string>
 
 
     //Login activity
@@ -16,7 +15,14 @@
     <string name="password_editText">Password</string>
     <string name="login_text">Login</string>
     <string name="signUp_text">"Don't have account"</string>
+    <string name="e_enter_mail">Please enter a email</string>
+    <string name="e_enter_valid_mail">Please enter valid email</string>
+    <string name="e_enter_password">Please enter a password</string>
+    <string name="e_login_fail">Login Failed</string>
 
     //Register activity
     <string name="register_button">Register</string>
+    <string name="e_password_requirements">Password must has minimum 6 characters</string>
+    <string name="p_register_success">Registration successful</string>
+    <string name="e_sign_up_fail">Sign Up failed. Try again.</string>
 </resources>
