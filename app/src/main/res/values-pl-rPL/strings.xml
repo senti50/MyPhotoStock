@@ -26,4 +26,7 @@
     <string name="p_register_success">Rejestracja zakończona pomyślnie</string>
     <string name="e_sign_up_fail">Wystąpił błąd podczas rejestracji. Spróbuj ponownie później.</string>
     <string name="sample_data">Przykładowe dane</string>
+
+    //Other
+    <string name="write_text">"Wpisz tekst…"</string>
 </resources>

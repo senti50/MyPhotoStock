@@ -24,4 +24,7 @@
     <string name="p_register_success">Registration successful</string>
     <string name="e_sign_up_fail">Sign Up failed. Try again.</string>
     <string name="sample_data">Sample data</string>
+
+    //Other
+    <string name="write_text">"Write text…"</string>
 </resources>

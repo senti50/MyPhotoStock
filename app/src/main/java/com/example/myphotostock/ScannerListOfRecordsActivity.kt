@@ -1,5 +1,6 @@
 package com.example.myphotostock
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -41,7 +42,7 @@ class ScannerListOfRecordsActivity : AppCompatActivity() {
 
     private fun getScannerRecordsFromDatabase(listId: String): List<ScannerRecord> {
         //TODO: Pobieranie konkretnej listy skanera z firebase
-        val listOfScanRecLists: List<ScannerRecord> = listOf(ScannerRecord("Pierwszy bardzo bardzo bardzo bardzo bardzo długi tekst", "1"), ScannerRecord("Drugi bardzo bardzo bardzo bardzo bardzo długi tekst", "1"), ScannerRecord("Trzeci bardzo bardzo bardzo bardzo bardzo długi tekst", "1"))
+        val listOfScanRecLists: List<ScannerRecord> = listOf(ScannerRecord("Pierwszy bardzo bardzo bardzo bardzo bardzo długi tekst", "1"), ScannerRecord("Drugi bardzo bardzo bardzo bardzo bardzo długi tekst", "1"), ScannerRecord("Trzeci bardzo bardzo bardzo www.wp.pl bardzo bardzo długi tekst", "1"))
         return  listOfScanRecLists
     }
 
@@ -50,6 +51,17 @@ class ScannerListOfRecordsActivity : AppCompatActivity() {
         val scannerListAdapter: ArrayAdapter<String> = ArrayAdapter(this, R.layout.cell_one_title_item, R.id.TV_Title, listOfRecords.map { it.content } )
 
         LV_scanner_records.adapter = scannerListAdapter
+
+        LV_scanner_records.setOnItemClickListener {
+                parent, view, position, id ->
+            val intent = Intent(this, ShowScannerRecordActivity::class.java)
+            val item = listOfRecords[id.toInt()]
+            intent.putExtra("contextRecord", item.content)
+            intent.putExtra("idRecord", item.listId)
+            intent.putExtra("nameList", nameOfList)
+            intent.putExtra("idList", idOfList)
+            startActivity(intent)
+        }
 
     }
 
