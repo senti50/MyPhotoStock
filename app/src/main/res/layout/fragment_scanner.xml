@@ -5,9 +5,11 @@
     android:layout_height="match_parent"
     tools:context=".ScannerFragment">
 
-    <TextView
+    <ListView
+        android:id="@+id/LV_scanner_lists"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Scanner" />
+        tools:listitem="@layout/cell_one_title_item"
+        />
 
 </FrameLayout>

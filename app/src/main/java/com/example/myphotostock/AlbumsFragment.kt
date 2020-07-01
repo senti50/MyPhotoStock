@@ -6,8 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_albums.*
 
 
@@ -19,7 +17,7 @@ class AlbumsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        listOfAlbums = takeAlbumsFromFirebase()
+        listOfAlbums = getAlbumsFromDatabase()
 
         return inflater.inflate(R.layout.fragment_albums, container, false)
     }
@@ -27,19 +25,19 @@ class AlbumsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupRecyclerView()
+        setupListView()
 
     }
 
-    private fun takeAlbumsFromFirebase(): List<PhotoAlbum> {
+    private fun getAlbumsFromDatabase(): List<PhotoAlbum> {
         //TODO: Pobieranie listy albumów z firebase
         val listOfAlb: List<PhotoAlbum> = listOf(PhotoAlbum("Album nr 1", "1234"), PhotoAlbum("Album nr 2", "12345"), PhotoAlbum("Album nr 3", "123456"))
         return listOfAlb
     }
 
-    private fun setupRecyclerView() {
+    private fun setupListView() {
 
-        val albumsAdapter: ArrayAdapter<String> = ArrayAdapter<String>(activity!!, R.layout.cell_album_item, R.id.TV_AlbumName, listOfAlbums.map { it.title } )
+        val albumsAdapter: ArrayAdapter<String> = ArrayAdapter<String>(activity!!, R.layout.cell_one_title_item, R.id.TV_Title, listOfAlbums.map { it.title } )
 
         LV_albums.adapter = albumsAdapter
     }
