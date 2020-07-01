@@ -1,5 +1,6 @@
 package com.example.myphotostock
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -25,7 +26,7 @@ class ScannerFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        activity?.setTitle(resources.getString(R.string.scanner_database))
         setupListView()
 
     }
@@ -41,6 +42,15 @@ class ScannerFragment : Fragment() {
         val scannerListAdapter: ArrayAdapter<String> = ArrayAdapter(activity!!, R.layout.cell_one_title_item, R.id.TV_Title, listOfScannerList.map { it.name } )
 
         LV_scanner_lists.adapter = scannerListAdapter
+
+        LV_scanner_lists.setOnItemClickListener {
+            parent, view, position, id ->
+            val intent = Intent(activity, ScannerListOfRecordsActivity::class.java)
+            val item = listOfScannerList[id.toInt()]
+            intent.putExtra("nameListScanner", item.name)
+            intent.putExtra("idListScanner", item.id)
+            startActivity(intent)
+        }
 
     }
 

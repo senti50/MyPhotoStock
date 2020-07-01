@@ -2,8 +2,6 @@
     <string name="app_name">MyPhotoStock</string>
 
 
-
-
     <string name="camera">Camera</string>
     <string name="scanner_database">Scanner data</string>
     <string name="albums">Albums</string>
