@@ -21,6 +21,12 @@
         android:title="Camera"
         app:cnb_iconColor="@color/camera"
         />
+    <item
+        android:id="@+id/logout"
+        android:icon="@drawable/ic_baseline_exit_to_app_24"
+        android:title="Logout"
+        app:cnb_iconColor="@color/camera"
+        />
 
 
 

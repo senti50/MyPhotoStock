@@ -2,4 +2,14 @@
     <string name="app_name">MyPhotoStock</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    //Login activity
+    <string name="email_editText">Email</string>
+    <string name="password_editText">Password</string>
+    <string name="login_text">Login</string>
+    <string name="signUp_text">"Don't have account"</string>
+
+    //Register activity
+    <string name="register_button">Register</string>
+
 </resources>
