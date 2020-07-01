@@ -49,8 +49,8 @@ class RegisterActivity : AppCompatActivity() {
             passwordEditText.requestFocus()
             return
         }
-        if (passwordEditText.text.length <= 6) {
-            passwordEditText.error = "Password must be longer"
+        if (passwordEditText.text.length <= 5) {
+            passwordEditText.error = "Password must has minimum 6 characters"
             passwordEditText.requestFocus()
             return
         }
