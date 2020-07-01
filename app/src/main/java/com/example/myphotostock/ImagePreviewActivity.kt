@@ -46,9 +46,7 @@ class ImagePreviewActivity : AppCompatActivity() {
             finish()
         }
         button_accept.setOnClickListener{
-            // upload image to firebase
-
-
+            //TODO: upload image to firebase
 
             finish()
         }
