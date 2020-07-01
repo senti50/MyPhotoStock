@@ -12,6 +12,7 @@ import android.os.Handler
 import android.util.Log
 import android.view.*
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
@@ -166,6 +167,8 @@ class CameraFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         activity?.setTitle(resources.getString(R.string.camera))
+        (activity as AppCompatActivity).supportActionBar?.hide()
+
     }
 
     override fun onDestroy() {
