@@ -32,7 +32,7 @@ class ScannerFragment : Fragment() {
     }
 
     private fun getScannerListsFromDatabase(): List<ScannerList> {
-        //TODO: Pobieranie listy list ze skanera z firebase
+        //TODO: Pobieranie konkrentnej listy ze skanera z firebase po id
         val listOfScanLists: List<ScannerList> = listOf(ScannerList("1", "Lista skaner 1"), ScannerList("2", "Lista skaner 2"), ScannerList("3", "Lista skaner 3"))
         return  listOfScanLists
     }
