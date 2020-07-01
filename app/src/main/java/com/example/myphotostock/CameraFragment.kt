@@ -152,7 +152,7 @@ class CameraFragment : Fragment() {
                 }
 
                 override fun onError(exception: ImageCaptureException) {
-                    val msg = "Photo capture failed: ${exception.message}"
+                    val msg = resources.getString(R.string.e_photo_capture)+" ${exception.message}"
                     Log.e("CameraFragment", "Photo capture failed: ${exception.message}", exception)
                     previewView.post {
                         Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
@@ -185,6 +185,8 @@ class CameraFragment : Fragment() {
         imageCapture = ImageCapture.Builder().apply {
             setCaptureMode(ImageCapture.CAPTURE_MODE_MINIMIZE_LATENCY)
                 .setFlashMode(flashMode)
+            setTargetAspectRatio(AspectRatio.RATIO_16_9)
+            setTargetRotation(previewView.display.rotation)
         }.build()
         val cameraSelector =
             CameraSelector.Builder().requireLensFacing(CameraSelector.LENS_FACING_BACK).build()

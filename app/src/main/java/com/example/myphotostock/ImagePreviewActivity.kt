@@ -2,7 +2,9 @@ package com.example.myphotostock
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Matrix
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -11,8 +13,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import kotlinx.android.synthetic.main.activity_image_preview.*
 import java.io.File
-import java.lang.Exception
-
 
 
 class ImagePreviewActivity : AppCompatActivity() {
@@ -30,8 +30,8 @@ class ImagePreviewActivity : AppCompatActivity() {
                 //val inputStream = Uri.fromFile(file)
               //val bitmap=BitmapFactory.decodeStream(contentResolver.openInputStream(inputStream))
                 Handler().postDelayed({val bitmap=BitmapFactory.decodeFile(imagePath)
-
-                    image_preview.setImageBitmap(bitmap)},2000)
+                    val rotatedImage = rotatebitmap(bitmap)
+                    image_preview.setImageBitmap(rotatedImage)},2000)
 
             }catch (e:Exception){
                 Log.e("ImagePreviewActivity",e.toString())
@@ -72,6 +72,14 @@ class ImagePreviewActivity : AppCompatActivity() {
         } else { //permission is automatically granted on sdk<23 upon installation
             true
         }
+    }
+
+    private fun rotatebitmap(bitmap: Bitmap): Bitmap {
+        val matrix = Matrix()
+        matrix.postRotate(90.0f)
+        val rotatedBitmap =
+            Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true)
+        return rotatedBitmap
     }
 
 
