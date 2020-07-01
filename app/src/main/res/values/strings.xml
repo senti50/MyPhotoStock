@@ -6,6 +6,9 @@
     <string name="scanner_database">Scanner data</string>
     <string name="albums">Albums</string>
     <string name="p_photo_capture">Photo capture succeeded:</string>
+    <string name="logout_alert">Do you want to log out?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 
 
     //Login activity

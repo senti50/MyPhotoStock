@@ -8,6 +8,9 @@
     <string name="scanner_database">Dane skanera</string>
     <string name="albums">Albumy</string>
     <string name="p_photo_capture">Poprawnie zrobiono zdjęcie:</string>
+    <string name="logout_alert">Czy chcesz się wylogować?</string>
+    <string name="yes">Tak</string>
+    <string name="no">Nie</string>
 
 
     //Login activity
