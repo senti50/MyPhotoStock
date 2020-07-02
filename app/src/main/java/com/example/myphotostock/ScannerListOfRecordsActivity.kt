@@ -33,7 +33,7 @@ class ScannerListOfRecordsActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         if (item?.itemId == android.R.id.home) {
-            NavUtils.navigateUpFromSameTask(this)
+            onBackPressed()
             return true
         } else {
             return super.onOptionsItemSelected(item)

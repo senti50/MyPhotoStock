@@ -195,6 +195,7 @@ class CameraFragment : Fragment() {
             CameraSelector.Builder().requireLensFacing(CameraSelector.LENS_FACING_BACK).build()
         cameraProviderFuture.addListener(Runnable {
             val cameraProvider = cameraProviderFuture.get()
+            //TODO: Error: Attempting to bind too many ImageCapture or VideoCapture instances
             val camera =
                 cameraProvider.bindToLifecycle(this, cameraSelector, imagePreview, imageCapture)
             cameraControl = camera.cameraControl

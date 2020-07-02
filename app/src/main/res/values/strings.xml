@@ -8,9 +8,16 @@
     <string name="p_photo_capture">Photo capture succeeded:</string>
     <string name="e_photo_capture">Photo capture failed: </string>
     <string name="logout_alert">Do you want to log out?</string>
+    <string name="Logout">Logout</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
-
+    <string name="alert_add_new_album">Add new album</string>
+    <string name="add">Add</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete">Delete</string>
+    <string name="delete_question">Delete this item?</string>
+    <string name="not_back">You can not back this action.</string>
+    <string name="alert_add_new_scanner_list">Add new scanner list</string>
 
     //Login activity
     <string name="email_editText">Email</string>

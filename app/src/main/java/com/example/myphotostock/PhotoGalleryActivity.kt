@@ -1,9 +1,10 @@
 package com.example.myphotostock
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NavUtils
+
 
 class PhotoGalleryActivity : AppCompatActivity() {
 
@@ -26,7 +27,7 @@ class PhotoGalleryActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         if (item?.itemId == android.R.id.home) {
-            NavUtils.navigateUpFromSameTask(this)
+            onBackPressed()
             return true
         } else {
             return super.onOptionsItemSelected(item)

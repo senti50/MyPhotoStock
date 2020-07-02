@@ -7,4 +7,5 @@
     <color name="albums">#1194AA</color>
     <color name="scanner">#E6A919</color>
     <color name="ic_launcher_background">#00B2DC</color>
+    <color name="danger_color">#FF0219</color>
 </resources>

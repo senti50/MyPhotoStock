@@ -10,9 +10,16 @@
     <string name="p_photo_capture">Poprawnie zrobiono zdjęcie:</string>
     <string name="e_photo_capture">Wystąpił błąd przy robieniu zdjęcia: </string>
     <string name="logout_alert">Czy chcesz się wylogować?</string>
+    <string name="Logout">Wyloguj</string>
     <string name="yes">Tak</string>
     <string name="no">Nie</string>
-
+    <string name="alert_add_new_album">Dodaj nowy album</string>
+    <string name="add">Dodaj</string>
+    <string name="cancel">Wróć</string>
+    <string name="delete">Usuń</string>
+    <string name="delete_question">Usunąć ten wpis?</string>
+    <string name="not_back">Tej akcji nie można cofnąć.</string>
+    <string name="alert_add_new_scanner_list">Dodaj nową listę danych skanera</string>
 
     //Login activity
     <string name="email_editText">E-mail</string>
