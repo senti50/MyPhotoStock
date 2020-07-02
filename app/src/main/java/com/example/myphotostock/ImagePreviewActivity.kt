@@ -2,9 +2,11 @@ package com.example.myphotostock
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Matrix
+import android.media.VolumeShaper
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -74,7 +76,12 @@ class ImagePreviewActivity : AppCompatActivity() {
 
     private fun rotatebitmap(bitmap: Bitmap): Bitmap {
         val matrix = Matrix()
-        matrix.postRotate(90.0f)
+        if(resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            matrix.postRotate(90.0f)
+        } else {
+            matrix.postRotate(180.0f)
+        }
+
         val rotatedBitmap =
             Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true)
         return rotatedBitmap
