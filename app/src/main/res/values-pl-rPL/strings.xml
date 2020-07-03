@@ -19,7 +19,8 @@
     <string name="delete">Usuń</string>
     <string name="delete_question">Usunąć ten wpis?</string>
     <string name="not_back">Tej akcji nie można cofnąć.</string>
-    <string name="alert_add_new_scanner_list">Dodaj nową listę danych skanera</string>
+    <string name="alert_add_new_scanner_list">Dodaj nową listę danych</string>
+    <string name="alert_add_new_scanner_record">Dodaj nowy wpis w liście</string>
 
     //Login activity
     <string name="email_editText">E-mail</string>

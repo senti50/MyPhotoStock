@@ -18,6 +18,7 @@
     <string name="delete_question">Delete this item?</string>
     <string name="not_back">You can not back this action.</string>
     <string name="alert_add_new_scanner_list">Add new scanner list</string>
+    <string name="alert_add_new_scanner_record">Add new record in list</string>
 
     //Login activity
     <string name="email_editText">Email</string>

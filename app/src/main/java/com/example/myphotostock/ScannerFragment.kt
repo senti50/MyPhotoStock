@@ -58,7 +58,7 @@ class ScannerFragment : Fragment() {
                 listOfScannerList = mutableListOf()
 
                 for(i in databaseSnapshot.children){
-                    val name: String = i.getValue(String::class.java) ?: ""
+                    val name: String = i.child("name").getValue().toString()
                     val newRow = ScannerList(i.ref.key.toString(), name)
                     listOfScannerList.add(newRow)
                 }
@@ -159,7 +159,7 @@ class ScannerFragment : Fragment() {
 
     private fun addNewScannerList(text: String) {
         val firebaseInput = ScannerList("${Date().time}",text)
-        refDbScannerLists.child(firebaseInput.id).setValue(firebaseInput.name)
+        refDbScannerLists.child(firebaseInput.id).child("name").setValue(firebaseInput.name)
     }
 
     private fun setupListView() {
