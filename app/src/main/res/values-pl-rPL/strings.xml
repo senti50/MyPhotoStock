@@ -21,6 +21,9 @@
     <string name="not_back">Tej akcji nie można cofnąć.</string>
     <string name="alert_add_new_scanner_list">Dodaj nową listę danych</string>
     <string name="alert_add_new_scanner_record">Dodaj nowy wpis w liście</string>
+    <string name="photo_preview">Podgląd zdjęcia</string>
+    <string name="capture">Zrób zdjęcie</string>
+    <string name="torch">Lampa błyskowa</string>
 
     //Login activity
     <string name="email_editText">E-mail</string>

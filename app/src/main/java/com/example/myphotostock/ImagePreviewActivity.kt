@@ -1,16 +1,21 @@
 package com.example.myphotostock
 
 import android.Manifest
+import android.content.Context
 import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Matrix
+import android.hardware.SensorManager
 import android.media.VolumeShaper
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
+import android.view.Surface
+import android.view.WindowManager
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import kotlinx.android.synthetic.main.activity_image_preview.*
@@ -23,6 +28,7 @@ class ImagePreviewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_image_preview)
+        supportActionBar?.hide()
         //absolute path to the photo
         val imagePath=intent.getStringExtra("imagePath")
 
@@ -76,11 +82,16 @@ class ImagePreviewActivity : AppCompatActivity() {
 
     private fun rotatebitmap(bitmap: Bitmap): Bitmap {
         val matrix = Matrix()
-        if(resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            matrix.postRotate(90.0f)
-        } else {
-            matrix.postRotate(180.0f)
+        val rot: Float
+        val screenOrientation = (this.getSystemService(Context.WINDOW_SERVICE) as WindowManager).defaultDisplay.orientation
+        when(screenOrientation) {
+            Surface.ROTATION_0 -> rot = 90.0f
+            Surface.ROTATION_90 -> rot = 360.0f
+            Surface.ROTATION_180 -> rot = 0.0f
+            else -> rot = 180.0f
         }
+        
+        matrix.postRotate(rot)
 
         val rotatedBitmap =
             Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true)

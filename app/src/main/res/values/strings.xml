@@ -19,6 +19,9 @@
     <string name="not_back">You can not back this action.</string>
     <string name="alert_add_new_scanner_list">Add new scanner list</string>
     <string name="alert_add_new_scanner_record">Add new record in list</string>
+    <string name="photo_preview">Preview of photo</string>
+    <string name="capture">Capture</string>
+    <string name="torch">flash</string>
 
     //Login activity
     <string name="email_editText">Email</string>
