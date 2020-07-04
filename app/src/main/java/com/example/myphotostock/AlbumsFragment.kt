@@ -117,6 +117,7 @@ class AlbumsFragment : Fragment() {
                 // nothing
             }
             .setPositiveButton(resources.getString(R.string.yes)) { dialog, which ->
+                //TODO: Add remove list of photos and photos files
                 refDbPhotoAlbum.child("${listOfAlbums[position].albumId}").removeValue()
             }
             .show()
