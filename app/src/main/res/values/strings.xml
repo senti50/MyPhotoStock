@@ -42,4 +42,8 @@
 
     //Other
     <string name="write_text">"Write text…"</string>
+    <string name="photo_upload_successful">Photo uploaded successful</string>
+    <string name="Choose_album">Choose album</string>
+    <string name="ok">OK</string>
+    <string name="no_album_created">You do not have any albums. First you have to create new album.</string>
 </resources>

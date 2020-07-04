@@ -99,6 +99,7 @@ class CameraFragment : Fragment() {
             Handler().postDelayed({activity?.let {
                 val intent = Intent(activity, ImagePreviewActivity::class.java)
                 intent.putExtra("imagePath", imagePath)
+                intent.flags = Intent.FLAG_ACTIVITY_NO_HISTORY
                 startActivity(intent)
 
             }},1000)
