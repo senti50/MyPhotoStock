@@ -55,5 +55,7 @@
     <string name="e_photo_deleted_fail">Wystąpił błąd podczas usuwania zdjęcia.</string>
     <string name="p_album_deleted">Album i zdjęcie poprawnie usunięte!</string>
     <string name="e_delete_album_fail">Wystąpił błąd podczas usuwania albumu.</string>
+    <string name="e_change_album">Wystąpił błąd podczas zmiany albumu</string>
+    <string name="p_changed_album">Album został zmieniony</string>
 
 </resources>

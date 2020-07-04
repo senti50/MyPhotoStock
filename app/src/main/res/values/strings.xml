@@ -53,5 +53,7 @@
     <string name="e_photo_deleted_fail">Occur error during deleting photo.</string>
     <string name="p_album_deleted">Album and photos successfully deleted!</string>
     <string name="e_delete_album_fail">Occur error during deleting album.</string>
+    <string name="e_change_album">Occur error during changing album</string>
+    <string name="p_changed_album">Album is changed</string>
 
 </resources>
