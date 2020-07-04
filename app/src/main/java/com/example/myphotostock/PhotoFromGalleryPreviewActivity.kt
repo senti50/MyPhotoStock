@@ -9,6 +9,8 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.Toast
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -18,6 +20,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_photo_from_gallery_preview.*
+import kotlinx.android.synthetic.main.cell_photo.view.*
 import java.io.File
 import java.lang.Exception
 
@@ -76,7 +79,12 @@ class PhotoFromGalleryPreviewActivity : AppCompatActivity() {
 
         photo = Photo(intent.getStringExtra("urlP"), intent.getStringExtra("idAlbumP"), intent.getStringExtra("nameP"))
 
-        Picasso.get().load(photo.urlToFile).error(R.drawable.ic_baseline_block_24).placeholder(R.drawable.ic_baseline_cloud_download_24).into(IV_previewSinglePhotoGallery)
+        //Picasso.get().load(photo.urlToFile).error(R.drawable.ic_baseline_block_24).placeholder(R.drawable.ic_baseline_cloud_download_24).into(IV_previewSinglePhotoGallery)
+
+        Glide.with(thisMainActivity)
+            .load(photo.urlToFile)
+            .apply(RequestOptions().placeholder(R.drawable.ic_baseline_cloud_download_24).error(R.drawable.ic_baseline_block_24))
+            .into(IV_previewSinglePhotoGallery)
 
     }
 

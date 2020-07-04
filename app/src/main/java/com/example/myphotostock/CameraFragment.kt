@@ -5,11 +5,14 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.res.Configuration
 import android.graphics.BitmapFactory
 import android.media.Image
 import android.os.Bundle
 import android.os.Handler
+import android.util.DisplayMetrics
 import android.util.Log
+import android.util.Rational
 import android.view.*
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -67,6 +70,7 @@ class CameraFragment : Fragment() {
     private lateinit var cameraControl: CameraControl
     private lateinit var cameraInfo: CameraInfo
     private var flashMode: Int = ImageCapture.FLASH_MODE_OFF
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -135,6 +139,12 @@ class CameraFragment : Fragment() {
         return view
     }
 
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        fragmentManager?.beginTransaction()?.replace(R.id.fragmentContainer, CameraFragment())?.commit()
+
+    }
+
     private fun takePicture() {
         val file = createFile(
             outputDirectory,
@@ -179,7 +189,6 @@ class CameraFragment : Fragment() {
         super.onDestroy()
         _binding = null
     }
-
 
 
     @SuppressLint("ClickableViewAccessibility", "RestrictedApi")
