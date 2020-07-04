@@ -48,5 +48,6 @@
     <string name="Choose_album">Wybierz album</string>
     <string name="ok">OK</string>
     <string name="no_album_created">Nie masz żadnych albumów. Najpierw musisz utworzyć nowy album.</string>
+    <string name="image">Obraz</string>
 
 </resources>
