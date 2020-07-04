@@ -49,5 +49,9 @@
     <string name="ok">OK</string>
     <string name="no_album_created">Nie masz żadnych albumów. Najpierw musisz utworzyć nowy album.</string>
     <string name="image">Obraz</string>
+    <string name="change_album">Zmień album</string>
+    <string name="delete_photo_question">Usunąć to zdjęcie?</string>
+    <string name="p_photo_deleted">Zdjęcie poprawnie usunięte!</string>
+    <string name="e_photo_deleted_fail">Wystąpił błąd podczas usuwania zdjęcia.</string>
 
 </resources>

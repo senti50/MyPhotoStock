@@ -148,16 +148,18 @@ class CameraFragment : Fragment() {
             object : ImageCapture.OnImageSavedCallback {
                 override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
                     previewView.post {
-                        Toast.makeText(context, resources.getString(R.string.p_photo_capture)+" ${file.absolutePath}", Toast.LENGTH_LONG).show()
+                        //Toast.makeText(context, resources.getString(R.string.p_photo_capture), Toast.LENGTH_LONG).show()
+                        Log.d("test", resources.getString(R.string.p_photo_capture)+" ${file.absolutePath}")
                     }
 
                 }
 
                 override fun onError(exception: ImageCaptureException) {
-                    val msg = resources.getString(R.string.e_photo_capture)+" ${exception.message}"
+                    val msg = resources.getString(R.string.e_photo_capture)
                     Log.e("CameraFragment", "Photo capture failed: ${exception.message}", exception)
                     previewView.post {
                         Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
+                        Log.d("test", resources.getString(R.string.e_photo_capture)+" ${exception.message}")
                     }
                 }
             })

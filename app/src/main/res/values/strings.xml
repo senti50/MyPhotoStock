@@ -47,4 +47,9 @@
     <string name="ok">OK</string>
     <string name="no_album_created">You do not have any albums. First you have to create new album.</string>
     <string name="image">Image</string>
+    <string name="change_album">Change album</string>
+    <string name="delete_photo_question">Delete this photo?</string>
+    <string name="p_photo_deleted">Photo successfully deleted!</string>
+    <string name="e_photo_deleted_fail">Occur error during deleting photo.</string>
+
 </resources>
