@@ -1,5 +1,6 @@
 package com.example.myphotostock
 
+import android.app.Activity
 import android.content.Context
 import android.content.DialogInterface.OnShowListener
 import android.content.Intent
@@ -21,21 +22,34 @@ import com.baoyz.swipemenulistview.SwipeMenu
 import com.baoyz.swipemenulistview.SwipeMenuCreator
 import com.baoyz.swipemenulistview.SwipeMenuItem
 import com.baoyz.swipemenulistview.SwipeMenuListView
+import com.google.android.gms.tasks.OnFailureListener
+import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.alert_input_text.view.*
 import kotlinx.android.synthetic.main.fragment_albums.*
 import kotlinx.android.synthetic.main.fragment_albums.view.*
+import java.lang.Exception
 import java.util.*
 
 
 class AlbumsFragment : Fragment() {
 
+    internal lateinit var auth: FirebaseAuth
+    private lateinit var userID: String
+
     private lateinit var listOfAlbums: MutableList<PhotoAlbum>
     private lateinit var refDbPhotoAlbum: DatabaseReference
+    private lateinit var mStorageRef: StorageReference
+    private lateinit var listOfPhotosInAlbum: MutableList<Photo>
+    private lateinit var act: MainActivity
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,8 +58,19 @@ class AlbumsFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_albums, container, false)
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        act = activity as MainActivity
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        //Auth
+        auth = FirebaseAuth.getInstance()
+        userID = auth.currentUser?.uid.toString()
+
+        mStorageRef = FirebaseStorage.getInstance().reference
 
         (activity as AppCompatActivity).supportActionBar?.show()
         activity?.setTitle(resources.getString(R.string.albums))
@@ -117,11 +142,65 @@ class AlbumsFragment : Fragment() {
                 // nothing
             }
             .setPositiveButton(resources.getString(R.string.yes)) { dialog, which ->
-                //TODO: Add remove list of photos and photos files
-                refDbPhotoAlbum.child("${listOfAlbums[position].albumId}").removeValue()
+
+                val refDbListOfPhotosInAlbum = (activity as MainActivity).refDatabase.child("listOfPhotos").child(listOfAlbums[position].albumId)
+
+                refDbListOfPhotosInAlbum.addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onCancelled(error: DatabaseError) {
+                        Log.d("test", "Error while downloading list of photos")
+                        Toast.makeText(act, resources.getString(R.string.e_delete_album_fail), Toast.LENGTH_LONG).show()
+                    }
+
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        listOfPhotosInAlbum = mutableListOf()
+
+                        for(i in snapshot.children){
+                            val url: String = i.getValue(String::class.java) ?: ""
+                            val newRow = Photo(url, listOfAlbums[position].albumId, i.ref.key.toString()+".jpg")
+                            listOfPhotosInAlbum.add(newRow)
+                        }
+                        Log.d("test", "List of photo downloaded successfully!")
+
+                        val listOfPhotosToDelete = listOfPhotosInAlbum.map { it.photoName }
+
+                        Log.d("test", "Deleting photos...")
+                        listOfPhotosToDelete.forEach {
+                            deletePhotoFromAlbumInStorage(it)
+                        }
+
+                        Log.d("test", "Deleting photo posts from database...")
+                        refDbListOfPhotosInAlbum.removeValue()
+
+                        Log.d("test", "Deleting album from database...")
+                        refDbPhotoAlbum.child("${listOfAlbums[position].albumId}").removeValue()
+
+                        Toast.makeText(act, resources.getString(R.string.p_album_deleted), Toast.LENGTH_LONG).show()
+
+                    }
+
+                })
+
+
             }
             .show()
 
+    }
+
+    private fun deletePhotoFromAlbumInStorage(photoName: String) {
+        val mStorageRefUser: StorageReference = mStorageRef.child( userID )
+        val mStorageRefUserImages = mStorageRefUser.child("images")
+        val desertDeleteRef = mStorageRefUserImages.child(photoName)
+
+        val deleteTask = desertDeleteRef.delete()
+        deleteTask.addOnSuccessListener(object: OnSuccessListener<Void?> {
+            override fun onSuccess(dataResult: Void?) {
+                Log.d("test","Photo $photoName successfully removed from Firebase Storage")
+            }
+        }).addOnFailureListener(object : OnFailureListener {
+            override fun onFailure(p0: Exception) {
+                Log.d("test","Error during removing photo $photoName from Firebase Storage")
+            }
+        })
     }
 
     private fun showAlertAddNewAlbum() {

@@ -53,5 +53,7 @@
     <string name="delete_photo_question">Usunąć to zdjęcie?</string>
     <string name="p_photo_deleted">Zdjęcie poprawnie usunięte!</string>
     <string name="e_photo_deleted_fail">Wystąpił błąd podczas usuwania zdjęcia.</string>
+    <string name="p_album_deleted">Album i zdjęcie poprawnie usunięte!</string>
+    <string name="e_delete_album_fail">Wystąpił błąd podczas usuwania albumu.</string>
 
 </resources>

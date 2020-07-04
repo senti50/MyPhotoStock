@@ -1,6 +1,5 @@
 package com.example.myphotostock
 
-import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -18,7 +17,6 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_photo_from_gallery_preview.*
-import kotlinx.android.synthetic.main.cell_photo.view.*
 import java.lang.Exception
 
 class PhotoFromGalleryPreviewActivity : AppCompatActivity() {
@@ -35,7 +33,7 @@ class PhotoFromGalleryPreviewActivity : AppCompatActivity() {
 
     private var isActionBarVisible: Boolean = true
 
-    private var mainActivity = this
+    private var thisMainActivity = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -124,13 +122,13 @@ class PhotoFromGalleryPreviewActivity : AppCompatActivity() {
                                 Log.d("test","Post about photo deleted from Firebase Realtime Database")
                             }
                         })
-                        Toast.makeText(mainActivity, resources.getString(R.string.p_photo_deleted), Toast.LENGTH_LONG).show()
+                        Toast.makeText(thisMainActivity, resources.getString(R.string.p_photo_deleted), Toast.LENGTH_LONG).show()
                         finish()
                     }
                 }).addOnFailureListener(object : OnFailureListener {
                     override fun onFailure(p0: Exception) {
                         Log.d("test","Error during removing photo from Firebase Storage")
-                        Toast.makeText(mainActivity, resources.getString(R.string.e_photo_deleted_fail), Toast.LENGTH_LONG).show()
+                        Toast.makeText(thisMainActivity, resources.getString(R.string.e_photo_deleted_fail), Toast.LENGTH_LONG).show()
                     }
                 })
 
