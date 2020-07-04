@@ -14,6 +14,7 @@ import android.view.*
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.*
+import androidx.camera.core.CameraX.unbindAll
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
 import androidx.core.content.ContextCompat
@@ -181,8 +182,9 @@ class CameraFragment : Fragment() {
 
 
 
-    @SuppressLint("ClickableViewAccessibility")
+    @SuppressLint("ClickableViewAccessibility", "RestrictedApi")
     private fun startCamera() {
+        CameraX.unbindAll()
 
         imagePreview = Preview.Builder().apply {
             setTargetAspectRatio(AspectRatio.RATIO_16_9)
@@ -198,7 +200,6 @@ class CameraFragment : Fragment() {
             CameraSelector.Builder().requireLensFacing(CameraSelector.LENS_FACING_BACK).build()
         cameraProviderFuture.addListener(Runnable {
             val cameraProvider = cameraProviderFuture.get()
-            //TODO: Error: Attempting to bind too many ImageCapture or VideoCapture instances
             val camera =
                 cameraProvider.bindToLifecycle(this, cameraSelector, imagePreview, imageCapture)
             cameraControl = camera.cameraControl
