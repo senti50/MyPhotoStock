@@ -98,24 +98,31 @@ class CameraFragment : Fragment() {
         }
 
         binding.cameraCaptureButton.setOnClickListener {
-            when (flashMode) {
-                ImageCapture.FLASH_MODE_OFF ->
-                    cameraControl.enableTorch(false)
+
+            if (allPermissionsGranted()) {
+                when (flashMode) {
+                    ImageCapture.FLASH_MODE_OFF ->
+                        cameraControl.enableTorch(false)
 
 
-                ImageCapture.FLASH_MODE_ON ->
-                    cameraControl.enableTorch(true)
+                    ImageCapture.FLASH_MODE_ON ->
+                        cameraControl.enableTorch(true)
+                }
+                takePicture()
+                Handler().postDelayed({activity?.let {
+                    val intent = Intent(activity, ImagePreviewActivity::class.java)
+                    intent.putExtra("imagePath", imagePath)
+                    intent.flags = Intent.FLAG_ACTIVITY_NO_HISTORY
+                    startActivity(intent)
+
+                }},500)
+                Log.i("FRAGMENT", imagePath)
+            } else {
+                requestPermissions(
+                    REQUIRED_PERMISSIONS,
+                    REQUEST_CODE_PERMISSIONS
+                )
             }
-            takePicture()
-            Handler().postDelayed({activity?.let {
-                val intent = Intent(activity, ImagePreviewActivity::class.java)
-                intent.putExtra("imagePath", imagePath)
-                intent.flags = Intent.FLAG_ACTIVITY_NO_HISTORY
-                startActivity(intent)
-
-            }},1000)
-            Log.i("FRAGMENT", imagePath)
-
 
         }
         binding.cameraTorchButton.setOnClickListener {
@@ -143,10 +150,20 @@ class CameraFragment : Fragment() {
         return view
     }
 
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        if (requestCode == 1) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Log.d("test", "CAMERA Permission granted")
+                fragmentManager?.beginTransaction()?.replace(R.id.fragmentContainer, CameraFragment())?.commit()
+            }
+        }
+
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    }
+
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         fragmentManager?.beginTransaction()?.replace(R.id.fragmentContainer, CameraFragment())?.commit()
-
     }
 
     private fun barcode_scanner() {

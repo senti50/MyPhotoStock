@@ -137,11 +137,7 @@ class BarcodeScannerActivity : AppCompatActivity() {
 
     }
 
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         if (requestCode == 1234) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Log.d("test", "CAMERA Permission granted")
