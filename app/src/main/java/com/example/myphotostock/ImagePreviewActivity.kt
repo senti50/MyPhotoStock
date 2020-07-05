@@ -113,6 +113,17 @@ class ImagePreviewActivity : AppCompatActivity() {
 
     }
 
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        if (requestCode == 2) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Log.d("test", "READ_EXTERNAL_STORAGE Permission granted")
+                recreate()
+            }
+        }
+
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    }
+
     private fun sendPhotoToCloud(choosenAlbum: Int) {
         Log.d("test", "StartFunction")
 
@@ -213,7 +224,7 @@ class ImagePreviewActivity : AppCompatActivity() {
                 ActivityCompat.requestPermissions(
                     this,
                     arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
-                    1
+                    2
                 )
                 false
             }
