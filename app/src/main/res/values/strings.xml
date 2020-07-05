@@ -55,5 +55,15 @@
     <string name="e_delete_album_fail">Occur error during deleting album.</string>
     <string name="e_change_album">Occur error during changing album</string>
     <string name="p_changed_album">Album is changed</string>
+    <string name="e_barcode_detector_fail">Detector not available. Try again later</string>
+
+    //Scanner
+    <string name="scanner_title">Barcode scanner</string>
+    <string name="scanner_result">Scanner result:</string>
+    <string name="scanner_choose_list">Choose scanner list</string>
+    <string name="add_to_list">Add to list</string>
+    <string name="e_no_scan_data">No scan data</string>
+    <string name="e_no_scanner_list">To save data you have to create scanner list first</string>
+    <string name="p_added_to_list">Data added to list successfully!</string>
 
 </resources>

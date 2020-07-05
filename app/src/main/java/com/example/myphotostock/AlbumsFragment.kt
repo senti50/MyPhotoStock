@@ -247,18 +247,18 @@ class AlbumsFragment : Fragment() {
 
         val albumsAdapter: ArrayAdapter<String> = ArrayAdapter<String>(activity, R.layout.cell_one_title_item, R.id.TV_Title, listOfAlbums.map { it.title } )
 
-        LV_albums.adapter = albumsAdapter
+        if (LV_albums != null ) {
+            LV_albums.adapter = albumsAdapter
 
-        LV_albums.setOnItemClickListener {
-                parent, view, position, id ->
-            val intent = Intent(activity, PhotoGalleryActivity::class.java)
-            val item = listOfAlbums[id.toInt()]
-            intent.putExtra("idAlbum", item.albumId)
-            intent.putExtra("titleAlbum", item.title)
-            startActivity(intent)
+            LV_albums.setOnItemClickListener {
+                    parent, view, position, id ->
+                val intent = Intent(activity, PhotoGalleryActivity::class.java)
+                val item = listOfAlbums[id.toInt()]
+                intent.putExtra("idAlbum", item.albumId)
+                intent.putExtra("titleAlbum", item.title)
+                startActivity(intent)
+            }
         }
-
-
 
     }
 

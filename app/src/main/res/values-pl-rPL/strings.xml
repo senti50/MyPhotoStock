@@ -57,5 +57,15 @@
     <string name="e_delete_album_fail">Wystąpił błąd podczas usuwania albumu.</string>
     <string name="e_change_album">Wystąpił błąd podczas zmiany albumu</string>
     <string name="p_changed_album">Album został zmieniony</string>
+    <string name="e_barcode_detector_fail">Detektor nie dostępny. Spróbuj ponownie później</string>
+
+    //Scanner
+    <string name="scanner_title">Skaner kodów</string>
+    <string name="scanner_result">Wyniki skanowania:</string>
+    <string name="scanner_choose_list">Wybierz listę skanera</string>
+    <string name="add_to_list">Dodaj do listy</string>
+    <string name="e_no_scan_data">Brak zeskanowanych danych</string>
+    <string name="e_no_scanner_list">Aby zapisać dane musisz najpierw utworzyć listę skanera</string>
+    <string name="p_added_to_list">Dane poprawnie zapisano w liście!</string>
 
 </resources>

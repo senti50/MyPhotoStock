@@ -2,7 +2,6 @@ package com.example.myphotostock
 
 import android.Manifest
 import android.app.Activity
-import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -16,7 +15,6 @@ import android.os.Handler
 import android.util.Log
 import android.view.Surface
 import android.view.WindowManager
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -26,7 +24,6 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.activity_image_preview.*
 import java.io.File
-import java.util.*
 
 
 class ImagePreviewActivity : AppCompatActivity() {
@@ -113,11 +110,6 @@ class ImagePreviewActivity : AppCompatActivity() {
             Log.d("test", "SaveButtonClicked")
             showAlertChooseAlbum()
         }
-
-
-    }
-
-    private fun savePhotoInfoAtDatabase() {
 
     }
 

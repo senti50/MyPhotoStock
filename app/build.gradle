@@ -52,7 +52,7 @@ dependencies {
     // bottom bar
     implementation 'com.ismaeldivita.chipnavigation:chip-navigation-bar:1.3.2'
     // material design
-    implementation 'com.google.android.material:material:1.3.0-alpha01'
+    implementation 'com.google.android.material:material:1.2.0-alpha02'
 
     //swipe to delete
     implementation 'com.baoyz.swipemenulistview:library:1.3.0'
@@ -76,5 +76,11 @@ dependencies {
 
     //Photo
     implementation 'com.squareup.picasso:picasso:2.71828'
+
+    //Barcode scanner
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.google.android.gms:play-services-vision:20.1.0'
 
 }

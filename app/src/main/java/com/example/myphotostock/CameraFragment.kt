@@ -91,6 +91,12 @@ class CameraFragment : Fragment() {
             )
         }
         outputDirectory = getOutputDirectory(requireContext())
+
+        binding.buttonScanner.setOnClickListener {
+            Log.d("test", "ScannerButton")
+            barcode_scanner()
+        }
+
         binding.cameraCaptureButton.setOnClickListener {
             when (flashMode) {
                 ImageCapture.FLASH_MODE_OFF ->
@@ -134,8 +140,6 @@ class CameraFragment : Fragment() {
             }
         }
 
-
-
         return view
     }
 
@@ -143,6 +147,12 @@ class CameraFragment : Fragment() {
         super.onConfigurationChanged(newConfig)
         fragmentManager?.beginTransaction()?.replace(R.id.fragmentContainer, CameraFragment())?.commit()
 
+    }
+
+    private fun barcode_scanner() {
+        val intent = Intent(activity, BarcodeScannerActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NO_HISTORY
+        startActivity(intent)
     }
 
     private fun takePicture() {
