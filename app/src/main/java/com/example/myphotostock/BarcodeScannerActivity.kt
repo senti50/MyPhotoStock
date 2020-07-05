@@ -102,13 +102,8 @@ class BarcodeScannerActivity : AppCompatActivity() {
                             Manifest.permission.CAMERA
                         ) != PackageManager.PERMISSION_GRANTED
                     ) {
-                        // TODO: Consider calling
-                        //    ActivityCompat#requestPermissions
-                        // here to request the missing permissions, and then overriding
-                        //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                        //                                          int[] grantResults)
-                        // to handle the case where the user grants the permission. See the documentation
-                        // for ActivityCompat#requestPermissions for more details.
+                        ActivityCompat.requestPermissions(thisAct,
+                            arrayOf(Manifest.permission.CAMERA), 1234)
                         return
                     }
                     cameraSource.start(SV_camera_view.getHolder())
@@ -140,6 +135,21 @@ class BarcodeScannerActivity : AppCompatActivity() {
             }
         })
 
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        if (requestCode == 1234) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Log.d("test", "CAMERA Permission granted")
+                recreate()
+            }
+        }
+
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
     private fun loadSpinner() {
